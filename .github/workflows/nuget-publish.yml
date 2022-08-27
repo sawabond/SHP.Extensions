@@ -1,0 +1,30 @@
+# Builds and pushes new nuget package version to nuget.org
+# It will trigger only after mergin into master 
+# and you need to set new version of nuget package in assembly
+
+name: .NET Nuget
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore SHP.Messaging/SHP.Messaging/SHP.Messaging.csproj
+    - name: Build
+      run: dotnet build --no-restore SHP.Messaging/SHP.Messaging/SHP.Messaging.csproj
+    - name: Publish  
+      uses: brandedoutcast/publish-nuget@v2.5.2  
+      with:   
+       PROJECT_FILE_PATH: SHP.Messaging/SHP.Messaging/SHP.Messaging.csproj  
+       NUGET_KEY: ${{secrets.NUGET_API_KEY}}
