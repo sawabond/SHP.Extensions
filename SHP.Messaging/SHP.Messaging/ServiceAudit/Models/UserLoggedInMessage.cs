@@ -2,7 +2,7 @@
 
 namespace SHP.Messaging.ServiceAudit.Models
 {
-    public class UserLoggedInMessage : MessageBase
+    public sealed class UserLoggedInMessage : AuditMessageBase
     {
         public UserLoggedInMessage(string username)
         {

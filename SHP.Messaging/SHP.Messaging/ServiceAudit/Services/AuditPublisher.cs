@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SHP.Messaging.ServiceAudit.Services
 {
-    internal class AuditPublisher : IMessagePublisher
+    internal sealed class AuditPublisher : IMessagePublisher
     {
         private readonly IPublishEndpoint _publisher;
 
@@ -14,7 +14,7 @@ namespace SHP.Messaging.ServiceAudit.Services
             _publisher = publisher;
         }
 
-        public async Task Publish<T>(T message) where T : MessageBase
+        public async Task Publish<T>(T message) where T : AuditMessageBase
         {
             await _publisher.Publish(message);
         }

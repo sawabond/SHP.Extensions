@@ -3,7 +3,7 @@ using System;
 
 namespace SHP.Messaging.ServiceAudit.Models
 {
-    public abstract class MessageBase
+    public abstract class AuditMessageBase
     {
         public DateTime Time { get; } = DateTime.UtcNow;
 
