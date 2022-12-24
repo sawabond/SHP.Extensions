@@ -8,7 +8,7 @@ namespace SHP.Messaging.ServiceAudit.Extensions
     {
         public static IServiceCollection AddAuditPublisher(this IServiceCollection services)
         {
-            services.AddScoped<IMessagePublisher, AuditPublisher>();
+            services.AddScoped<IAuditPublisher, AuditPublisher>();
 
             return services;
         }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SHP.Messaging.ServiceAudit.Services
 {
-    internal sealed class AuditPublisher : IMessagePublisher
+    internal sealed class AuditPublisher : IAuditPublisher
     {
         private readonly IPublishEndpoint _publisher;
 
